@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Data Transfer Object (DTO) for Task entity.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

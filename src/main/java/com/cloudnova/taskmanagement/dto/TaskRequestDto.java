@@ -6,6 +6,11 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Data Transfer Object (DTO) for Task entity.
+ * Used for transferring task data between the application layers.
+ * Contains validation constraints for the fields.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

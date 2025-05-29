@@ -7,6 +7,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
+/**
+ * Task entity class representing a task in the task management system.
+ */
 @Entity
 @Table(name = "tasks")
 @Getter
