@@ -1,7 +1,7 @@
 package com.cloudnova.taskmanagement.service;
 
-import com.cloudnova.taskmanagement.dto.TaskRequestDto;
-import com.cloudnova.taskmanagement.dto.TaskResponseDto;
+import com.cloudnova.taskmanagement.dto.TaskRequest;
+import com.cloudnova.taskmanagement.dto.TaskResponse;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import java.util.List;
  * Defines methods for CRUD operations on tasks.
  */
 public interface TaskService {
-    TaskResponseDto createTask(TaskRequestDto taskRequestDto);
-    TaskResponseDto getTaskById(Long id);
-    List<TaskResponseDto> getAllTasks();
-    TaskResponseDto updateTask(Long id, TaskRequestDto taskRequestDto);
+    TaskResponse createTask(TaskRequest taskRequestDto);
+    TaskResponse getTaskById(Long id);
+    List<TaskResponse> getAllTasks();
+    TaskResponse updateTask(Long id, TaskRequest taskRequestDto);
     void deleteTask(Long id);
 }

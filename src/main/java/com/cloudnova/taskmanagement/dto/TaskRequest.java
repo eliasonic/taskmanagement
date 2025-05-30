@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TaskRequestDto {
+public class TaskRequest {
 
     @NotBlank(message = "Title is required")
     private String title;

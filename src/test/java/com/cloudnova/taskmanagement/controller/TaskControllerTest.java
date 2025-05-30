@@ -1,6 +1,6 @@
 package com.cloudnova.taskmanagement.controller;
 
-import com.cloudnova.taskmanagement.dto.TaskRequestDto;
+import com.cloudnova.taskmanagement.dto.TaskRequest;
 import com.cloudnova.taskmanagement.model.Task;
 import com.cloudnova.taskmanagement.repository.TaskRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,7 +53,7 @@ class TaskControllerTest {
 
     @Test
     void createTask_ShouldReturnCreatedTask() throws Exception {
-        TaskRequestDto request = new TaskRequestDto(
+        TaskRequest request = new TaskRequest(
                 "Test Task",
                 "Test Description",
                 "PENDING",
@@ -99,7 +99,7 @@ class TaskControllerTest {
     @Test
     void updateTask_ShouldUpdateTask() throws Exception {
         Task savedTask = taskRepository.save(createTestTask());
-        TaskRequestDto updateRequest = new TaskRequestDto(
+        TaskRequest updateRequest = new TaskRequest(
                 "Updated Task",
                 null,
                 "DONE",

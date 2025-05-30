@@ -1,7 +1,7 @@
 package com.cloudnova.taskmanagement.service.impl;
 
-import com.cloudnova.taskmanagement.dto.TaskRequestDto;
-import com.cloudnova.taskmanagement.dto.TaskResponseDto;
+import com.cloudnova.taskmanagement.dto.TaskRequest;
+import com.cloudnova.taskmanagement.dto.TaskResponse;
 import com.cloudnova.taskmanagement.exception.TaskNotFoundException;
 import com.cloudnova.taskmanagement.model.Task;
 import com.cloudnova.taskmanagement.repository.TaskRepository;
@@ -30,10 +30,10 @@ public class TaskServiceImpl implements TaskService {
      * @return TaskResponseDto The created task data.
      */
     @Override
-    public TaskResponseDto createTask(TaskRequestDto taskRequestDto) {
+    public TaskResponse createTask(TaskRequest taskRequestDto) {
         Task task = modelMapper.map(taskRequestDto, Task.class);
         Task savedTask = taskRepository.save(task);
-        return modelMapper.map(savedTask, TaskResponseDto.class);
+        return modelMapper.map(savedTask, TaskResponse.class);
     }
 
     /**
@@ -43,10 +43,10 @@ public class TaskServiceImpl implements TaskService {
      * @throws TaskNotFoundException If the task with the given ID is not found.
      */
     @Override
-    public TaskResponseDto getTaskById(Long id) {
+    public TaskResponse getTaskById(Long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
-        return modelMapper.map(task, TaskResponseDto.class);
+        return modelMapper.map(task, TaskResponse.class);
     }
 
     /**
@@ -54,9 +54,9 @@ public class TaskServiceImpl implements TaskService {
      * @return List<TaskResponseDto> A list of all task data.
      */
     @Override
-    public List<TaskResponseDto> getAllTasks() {
+    public List<TaskResponse> getAllTasks() {
         return taskRepository.findAll().stream()
-                .map(task -> modelMapper.map(task, TaskResponseDto.class))
+                .map(task -> modelMapper.map(task, TaskResponse.class))
                 .collect(Collectors.toList());
     }
 
@@ -68,14 +68,14 @@ public class TaskServiceImpl implements TaskService {
      * @throws TaskNotFoundException If the task with the given ID is not found.
      */
     @Override
-    public TaskResponseDto updateTask(Long id, TaskRequestDto taskRequestDto) {
+    public TaskResponse updateTask(Long id, TaskRequest taskRequestDto) {
         Task existingTask = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
 
         modelMapper.map(taskRequestDto, existingTask);
         Task updatedTask = taskRepository.save(existingTask);
 
-        return modelMapper.map(updatedTask, TaskResponseDto.class);
+        return modelMapper.map(updatedTask, TaskResponse.class);
     }
 
     /**

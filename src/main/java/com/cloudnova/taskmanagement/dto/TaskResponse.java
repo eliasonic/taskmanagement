@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TaskResponseDto {
+public class TaskResponse {
 
     private Long id;
     private String title;

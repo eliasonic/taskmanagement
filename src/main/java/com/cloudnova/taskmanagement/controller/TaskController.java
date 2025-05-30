@@ -1,7 +1,7 @@
 package com.cloudnova.taskmanagement.controller;
 
-import com.cloudnova.taskmanagement.dto.TaskRequestDto;
-import com.cloudnova.taskmanagement.dto.TaskResponseDto;
+import com.cloudnova.taskmanagement.dto.TaskRequest;
+import com.cloudnova.taskmanagement.dto.TaskResponse;
 import com.cloudnova.taskmanagement.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,8 +32,8 @@ public class TaskController {
      */
     @PostMapping
     @Operation(summary = "Create a new task")
-    public ResponseEntity<TaskResponseDto> createTask(@Valid @RequestBody TaskRequestDto taskRequestDto) {
-        TaskResponseDto response = taskService.createTask(taskRequestDto);
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskRequest taskRequestDto) {
+        TaskResponse response = taskService.createTask(taskRequestDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -44,8 +44,8 @@ public class TaskController {
      */
     @GetMapping("/{id}")
     @Operation(summary = "Get a task by ID")
-    public ResponseEntity<TaskResponseDto> getTaskById(@PathVariable Long id) {
-        TaskResponseDto response = taskService.getTaskById(id);
+    public ResponseEntity<TaskResponse> getTaskById(@PathVariable Long id) {
+        TaskResponse response = taskService.getTaskById(id);
         return ResponseEntity.ok(response);
     }
 
@@ -55,8 +55,8 @@ public class TaskController {
      */
     @GetMapping
     @Operation(summary = "Get all tasks")
-    public ResponseEntity<List<TaskResponseDto>> getAllTasks() {
-        List<TaskResponseDto> responses = taskService.getAllTasks();
+    public ResponseEntity<List<TaskResponse>> getAllTasks() {
+        List<TaskResponse> responses = taskService.getAllTasks();
         return ResponseEntity.ok(responses);
     }
 
@@ -68,10 +68,10 @@ public class TaskController {
      */
     @PutMapping("/{id}")
     @Operation(summary = "Update a task")
-    public ResponseEntity<TaskResponseDto> updateTask(
+    public ResponseEntity<TaskResponse> updateTask(
             @PathVariable Long id,
-            @Valid @RequestBody TaskRequestDto taskRequestDto) {
-        TaskResponseDto response = taskService.updateTask(id, taskRequestDto);
+            @Valid @RequestBody TaskRequest taskRequestDto) {
+        TaskResponse response = taskService.updateTask(id, taskRequestDto);
         return ResponseEntity.ok(response);
     }
 
